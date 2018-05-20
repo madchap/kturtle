@@ -8,10 +8,13 @@ Don't forget to allow the app to access your X display.
 xhost +local:
 ```
 
+It is exposing a volume under `data`. You can map your local directory to save your scripts.
+
 ```
-docker run --rm --name kturtle \                                                                                                          
-	-e DISPLAY=$DISPLAY \
-	-v /tmp/.X11-unix:/tmp/.X11-unix \
-	--device=/dev/dri:/dev/dri 
+docker run --rm --name kturtle			\
+	-e DISPLAY=$DISPLAY			\
+	-v /tmp/.X11-unix:/tmp/.X11-unix	\
+	-v ~/kturtle_data:/data			\
+	--device=/dev/dri:/dev/dri		\
 	madchap/kturtle:latest
 ```
